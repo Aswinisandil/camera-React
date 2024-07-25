@@ -1,25 +1,21 @@
-import logo from './logo.svg';
+// src/App.js
+
+import React from 'react';
+import CameraComponent from './CameraComponent';
 import './App.css';
 
-function App() {
+const App = () => {
+  const handleConfirm = (imageData) => {
+    console.log('Image confirmed:', imageData);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Bluevoir Camera Component</h1>
+      <CameraComponent onConfirm={handleConfirm} />
     </div>
   );
-}
+};
 
 export default App;
+
