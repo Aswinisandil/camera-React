@@ -39,15 +39,15 @@ body {
 
 #bluevoir-video-box {
   position: absolute;
-  width: 18%;
-  height: 50%;
+  width: 23%;
+  height: 58%;
   border-radius: 50%;
   background: transparent;
   box-shadow: 0 0 0 1000px rgba(0, 0, 0, 0.5);
   border: 1px dashed lightgray;
   overflow: hidden;
   left: 50%;
-  top: 50%;
+  top: 40%;
   transform: translate(-50%, -50%);
 }
 
@@ -67,8 +67,8 @@ body {
 }
 
 #bluevoir-capture-btn {
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 3rem;
+  height: 3rem;
   border-radius: 50% !important;
   border: 1px dashed #359e7b;
   background-color: #359e7b;
@@ -94,6 +94,11 @@ body {
   max-height: 100%;
 }
 
+video{
+  width: 100%;
+  height: 100%;
+}
+
 #bluevoir-confirm-container,
 #bluevoir-retake-container {
   display: inline-block;
@@ -103,8 +108,8 @@ body {
 #bluevoir-confirm-container span,
 #bluevoir-retake-container span {
   color: #ffffff !important;
-  margin-top: 0.7vh;
-  font-size: 1rem;
+  margin-top: 1vh;
+  font-size: 1.3rem;
   z-index: 999;
   font-weight: 500;
 }
@@ -123,8 +128,8 @@ body {
 }
 
 #bluevoir-confirm-btn {
-  width: 2rem;
-  height: 2rem;
+  width: 3rem;
+  height: 3rem;
   border-radius: 50% !important;
   border: 1px dashed #39c24a;
   background-color: #39c24a;
@@ -170,12 +175,12 @@ body {
   #bluevoir-capture-container,
   #bluevoir-confirm-container,
   #bluevoir-retake-container {
-    bottom: 10px;
+    bottom: 4%;
   }
 
   #bluevoir-video-box {
-    width: 45%;
-    height: 50%;
+    width: 32%;
+    height: 45%;
   }
 
   
@@ -201,8 +206,9 @@ body {
     font-size: 2vw;
   }
 
+
   #bluevoir-video-box {
-    width: 40%;
+    width: 25%;
     height: 50%;
   }
 
