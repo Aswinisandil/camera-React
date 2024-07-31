@@ -1,5 +1,3 @@
-// src/CameraComponent.js
-
 import React, { useState, useRef, useEffect } from 'react';
 import './CameraComponent.css';
 
@@ -9,7 +7,6 @@ const CameraComponent = ({ onConfirm }) => {
   const [stream, setStream] = useState(null);
   const [capturedImage, setCapturedImage] = useState(null);
   const [permissionDenied, setPermissionDenied] = useState(false);
-  const [showOverlay, setShowOverlay] = useState(true);
   const overlayColor = 'rgba(0,0,0,0.5)';
 
   useEffect(() => {
@@ -19,9 +16,19 @@ const CameraComponent = ({ onConfirm }) => {
 
   const startCamera = async () => {
     try {
+      if (videoRef.current) {
+        videoRef.current.pause();
+        videoRef.current.srcObject = null;
+      }
+
       const stream = await navigator.mediaDevices.getUserMedia({ video: true });
       setStream(stream);
-      videoRef.current.srcObject = stream;
+
+      if (videoRef.current) {
+        videoRef.current.srcObject = stream;
+        await videoRef.current.play();
+      }
+
       setPermissionDenied(false);
     } catch (error) {
       console.error('Error accessing camera:', error);
@@ -33,6 +40,7 @@ const CameraComponent = ({ onConfirm }) => {
     if (stream) {
       const tracks = stream.getTracks();
       tracks.forEach(track => track.stop());
+      setStream(null);
     }
   };
 
@@ -40,12 +48,15 @@ const CameraComponent = ({ onConfirm }) => {
     e.preventDefault();
     const canvas = canvasRef.current;
     const video = videoRef.current;
-    canvas.width = video.videoWidth;
-    canvas.height = video.videoHeight;
-    canvas.getContext('2d').drawImage(video, 0, 0);
-    const imageData = canvas.toDataURL('image/png');
-    setCapturedImage(imageData);
-    stopCamera();
+    if (canvas && video) {
+      canvas.width = video.videoWidth;
+      canvas.height = video.videoHeight;
+      const context = canvas.getContext('2d');
+      context.drawImage(video, 0, 0, canvas.width, canvas.height);
+      const imageData = canvas.toDataURL('image/png');
+      setCapturedImage(imageData);
+      stopCamera();
+    }
   };
 
   const retakePicture = (e) => {
@@ -87,8 +98,8 @@ const CameraComponent = ({ onConfirm }) => {
             </section>
           ) : (
             <section id="bluevoir-camera-container">
-              <video ref={videoRef} id="bluevoir-video" autoPlay></video>
-              {showOverlay && <div id="bluevoir-video-box" style={{ boxShadow: `0 0 0 1000px ${overlayColor}` }}></div>}
+              <video ref={videoRef} id="bluevoir-video" autoPlay playsInline></video>
+              <div id="bluevoir-video-box" style={{ boxShadow: `0 0 0 1000px ${overlayColor}` }}></div>
               <div id="bluevoir-capture-container">
                 <button id="bluevoir-capture-btn" onClick={captureImage}></button>
                 <span>Capture</span>
