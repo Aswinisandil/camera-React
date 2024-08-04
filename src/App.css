@@ -40,7 +40,7 @@ body {
 #bluevoir-video-box {
   position: absolute;
   width: 23%;
-  height: 58%;
+  height: 70%;
   border-radius: 50%;
   background: transparent;
   box-shadow: 0 0 0 1000px rgba(0, 0, 0, 0.5);
@@ -67,8 +67,8 @@ body {
 }
 
 #bluevoir-capture-btn {
-  width: 3rem;
-  height: 3rem;
+  width: 4rem;
+  height: 4rem;
   border-radius: 50% !important;
   border: 1px dashed #359e7b;
   background-color: #359e7b;
@@ -128,8 +128,8 @@ video{
 }
 
 #bluevoir-confirm-btn {
-  width: 3rem;
-  height: 3rem;
+  width: 4rem;
+  height: 4rem;
   border-radius: 50% !important;
   border: 1px dashed #39c24a;
   background-color: #39c24a;
@@ -150,8 +150,8 @@ video{
 }
 
 #bluevoir-retake-btn {
-  width: 3rem;
-  height: 3rem;
+  width: 4rem;
+  height: 4rem;
   border-radius: 50% !important;
   border: 1px dashed #d5552f;
   background-color: #d5552f;
@@ -172,11 +172,11 @@ video{
     height: 3rem;
   }
 
-  #bluevoir-capture-container,
+  /* #bluevoir-capture-container,
   #bluevoir-confirm-container,
   #bluevoir-retake-container {
     bottom: 4%;
-  }
+  } */
 
   #bluevoir-video-box {
     width: 32%;
@@ -208,8 +208,8 @@ video{
 
 
   #bluevoir-video-box {
-    width: 25%;
-    height: 50%;
+    width: 24%;
+    height: 70%;
   }
 
   /* .webcam{
